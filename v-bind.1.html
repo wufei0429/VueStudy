@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>v-model </title>
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			
+			<img :src="avatar">
+			<a v-bind:href="url">{{website}}</a>
+			<p>{{name}}</p>
+		</div>
+		<script type="text/javascript">
+			//实例化一个对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					name:'日本辰巳出版株式会社 ',
+					website:'料理的1000个魔法',
+					url:'https://book.douban.com/subject/30434531/',
+					avatar:'https://img1.doubanio.com/view/subject/l/public/s29979849.jpg'
+				}
+			})
+		</script>
+	</body>
+</html>
