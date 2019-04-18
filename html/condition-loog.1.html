@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>v-bind练习</title>
+		<!-- 通过cdn引入Vue-->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<style type="text/css">
+			.container {
+				
+				width: 90%;
+				margin: 0 auto;
+			}
+
+			.top {
+				display: flex;
+				width: 600px;
+				height: 100px;
+				margin: 0 auto;
+				align-items: center;
+				justify-content: space-between;
+				/* 子元水平方向两端对齐  (一左一右) */
+
+			}
+
+			.card {
+			
+				width: 600px;
+				height: 90px;
+				margin: 0 auto;
+				border: 1px solid white;
+				border-radius: 10px;
+			}
+
+
+			.logo {
+				display: flex;
+
+				justify-content: space-between;
+
+			}
+            .left {
+				display: flex;
+			}
+			.right{
+				display: flex;
+			}
+
+			.logo img {
+				width: 90px;
+				height: 90px;
+				border-radius: 50%;
+				justify-content: space-between;
+			}
+
+			.desc {
+				margin-left: 10px;
+				font-weight: bold;
+			}
+
+			.number {
+				font-weight: bold;
+				float: right;
+				color: black;
+			}
+
+			.no-number {
+				font-weight: bold;
+				float: right;
+				color: green;
+			}
+			.xia{
+				
+				width: 600px;
+				height: 100px;
+				margin: 0 auto;
+				text-align: center;
+				border: 1px solid white;
+				
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="top">
+				<h3>推荐作者</h3>
+				<h3> 〇换一批</h3>
+			</div>
+			<hr />
+			<div class="container">
+				<!-- 通过循环遍历books数组 -->
+				<div class="card" v-for="book in books">
+					<div class="logo">
+						<div class="left">
+							<img :src="book.avatar">
+							
+						</div>
+						<h4>{{book.name}}</h4>
+							<p v-if="book.number" class="number">已关注</p>
+							<p v-else class="no-number"> +关注</p>
+						
+					</div>
+				</div>
+			</div>
+			<hr />
+            <div class="xia" >
+				<h3> 查看全部 </h3>
+			</div>
+		</div>
+		<script type="text/javascript">
+			//实例化一个vue对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					show: true,
+					books: [{
+							avatar: '../img/x.jpg',
+							name: '许莫琪',
+							number: false
+						},
+						{
+							avatar: '../img/book.jpg',
+							name: '梅水英',
+							number: false
+						},
+						{
+							avatar: '../img/wp.png',
+							name: '王萍',
+							number: false
+						},
+						{
+
+							avatar: '../img/w.jpg',
+							name: '吴飞',
+							number: true
+						}
+					]
+				}
+			})
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>v-on 指令练习</title>
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<button type="button" @click="handleClick">点我</button>
+			
+		</div>
+		<script type="text/javascript">
+			//实例化一个对象
+			var app = new Vue({
+				el: '#app',
+				data: {
+					name:'尤雨溪',
+					img
+				},
+				methods:{
+					handleClick:function(){
+						alert(this.name);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

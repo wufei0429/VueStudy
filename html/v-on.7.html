@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Vue.js表单练习</title>
+		<!-- 通过CDN引入Vue.js -->
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css" />
+		<style type="text/css">
+			.head {
+				width: 90%;
+				height: 100px;
+				margin: 0 auto;
+				font-weight: bold;
+				align-items: center;
+				justify-content: space-between;
+				/* 子元水平方向两端对齐  (一左一右) */
+			}
+
+			.header {
+				display: flex;
+				width: 600px;
+				height: 100px;
+				margin: 0 auto;
+				align-items: center;
+				justify-content: space-between;
+				/* 子元水平方向两端对齐  (一左一右) */
+			}
+
+			.body {
+
+				width: 800px;
+				height: 668px;
+				margin: 0 auto;
+				align-items: center;
+			}
+
+			.a {
+				width: 200px;
+				height: 40px;
+				border-radius: 10px;
+				margin-left: 60px;
+				border: 1px solid #DDDDDD;
+				outline: none;
+			}
+
+			.xia {
+				width: 300px;
+				height: 50px;
+
+			}
+
+			.g {
+				width: 300px;
+				height: 50px;
+				border-radius: 10px;
+				border: 1px solid #DDDDDD;
+				outline: none;
+				background-color: rgb(234,111,90);
+				color: #EEEEEE;
+
+			}
+
+			.foot {
+
+				width: 800px;
+				height: 100px;
+				margin: 0 auto;
+				align-items: center;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="head">
+
+				<h1><img src="../img/qidian.jpg" />用户注册</h1>
+			</div>
+
+			<div class="header">
+				<h2>1.填写注册信息</h2>
+				<h2>2.注册成功</h2>
+			</div>
+
+			<div class="body" align="center">
+				<hr>
+				<p>账&emsp;&emsp;号：<input v-model="name" placeholder="输入账号……" class="a"></p>
+				<br />
+
+				<p>密&emsp;&emsp;码：<input v-model="password1" placeholder="输入密码……" class="a"></p>
+				<br />
+
+				<p>确认&nbsp;&nbsp;密码:<input v-model="password2" placeholder="再次输入密码……" class="a"></p>
+				<br />
+				<p>爱&emsp;&emsp;&emsp;好：
+					<input type="checkbox" id="baidu" value="玄幻" v-model="hobby">
+					<label for="baidu">玄幻</label>
+					<input type="checkbox" id="google" value="都市" v-model="hobby">
+					<label for="google">都市</label>
+					<input type="checkbox" id="tencent" value="仙侠" v-model="hobby">
+					<label for="tencent">仙侠</label>
+					<input type="checkbox" id="history" value="历史" v-model="hobby">
+					<label for="tencent">历史</label>
+				</p>
+				<br />
+				<p>职&emsp;&emsp;业：
+					<select v-model="selected" name="fruit" class="a">
+						<option value="">身份选择</option>
+						<option value="学生">学生</option>
+						<option value="工作">工作</option>
+						<option value="教师">教师</option>
+						<option value="其他">其他</option>
+					</select>
+				</p>
+
+				<br />
+				<div class="deal">
+					<input type="checkbox" id="deal" name="checkbox" checked>
+					<label for="deal" class="ui-checkbox"></label><label for="deal">我已阅读并同意</label>
+					<a>《用户服务协议》</a>
+				</div>
+				<br />
+				<hr>
+				<div class="xia">
+					<button type="button" @click="commit" class="g">
+						<h3> 立即注册 </h3>
+					</button>
+
+				</div>
+
+			</div>
+			<div class="foot" align="center">
+				<div class="link">
+					<a href="//www.qidian.com/about/intro" target="_blank">关于起点</a>
+					<a href="//www.qidian.com/about/contact" target="_blank">联系我们</a>
+					<a href="http://join.book.qq.com/index.html" target="_blank">加入我们</a>
+					<a href="http://kf.qidian.com/Default.aspx" target="_blank">客服中心</a>
+					<a href="http://bbs.qidian.com/list/53" target="_blank">提交建议</a>
+					<a href="https://jubao.yuewen.com/" target="_blank">举报中心</a>
+				</div>
+
+				<p>本站所收录作品、社区话题、书库评论及本站所做之广告均属个人行为，与本站立场无关</p>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					name: '',
+					password1: '',
+					password2: '',
+
+					picked: 'male',
+					selected: '',
+					hobby: []
+				},
+				methods: {
+					commit: function() {
+						var name = this.name;
+						var password2 = this.password2;
+						var password1 = this.password1;
+						if (name == '') {
+							alert("请输入账号");
+						} else if (password1 !== password2) {
+							alert("两次输入的密码不一致");
+						} else if (name == '' || password1 == '' || password2 == '') {
+							alert("账号或密码为空！");
+						} else {
+							alert("注册成功！你注册的内容\n昵称:" + name + "\n密码：" + password1 +
+								"\n个人身份：" + this.selected +
+								"\n你的爱好是" + this.hobby);
+						}
+
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
